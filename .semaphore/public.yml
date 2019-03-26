@@ -1,0 +1,14 @@
+# Use the latest stable version of Semaphore 2.0 YML syntax:
+version: v1.0
+name: Public
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Fail
+    task:
+      jobs:
+      - name: Exit
+        commands:
+          - exit 1

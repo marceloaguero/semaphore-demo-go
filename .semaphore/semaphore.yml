@@ -80,4 +80,9 @@ blocks:
           - cache restore $(checksum webServer.go)
           - ./bin/webServer 8001 &
           - curl --silent localhost:8001/time | grep "The current time is"
+promotions:
+  - name: Public
+    pipeline_file: public.yml
+    auto_promote_on:
+      - result: passed
 
