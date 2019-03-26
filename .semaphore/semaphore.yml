@@ -19,5 +19,5 @@ blocks:
         - name: Private
           commands:
             - git diff --name-only --exit-code HEAD^ private && exit 0 || echo Continue
-            - echp "Process private"
+            - echo "Process private"
 
