@@ -13,12 +13,9 @@ blocks:
       jobs:
         - name: Public
           commands:
-            #- git diff --name-only --exit-code HEAD^ public && exit || echo Continue
-            - exit 0
-            - echo "Process public"
-
-        - name: Private
-          commands:
-            - git diff --name-only --exit-code HEAD^ private && exit || echo Continue
-            - echo "Process private"
-
+            - git diff --name-only --exit-code HEAD^ public
+promotions:
+  - name: Process public
+    pipeline_file: public.yml
+    auto_promote_on:
+      - result: failed

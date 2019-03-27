@@ -6,9 +6,9 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Fail
+  - name: Process public
     task:
       jobs:
-      - name: Exit
+      - name: Process public 
         commands:
-          - exit 1
+          - echo "Public"
