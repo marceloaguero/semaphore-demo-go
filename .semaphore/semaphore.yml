@@ -13,7 +13,8 @@ blocks:
       jobs:
         - name: Public
           commands:
-            - git diff --name-only --exit-code HEAD^ public && exit || echo Continue
+            #- git diff --name-only --exit-code HEAD^ public && exit || echo Continue
+            - exit 0
             - echo "Process public"
 
         - name: Private
