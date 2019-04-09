@@ -7,15 +7,18 @@ agent:
 blocks:
   - name: Check modifications
     task:
-      prologue:
-        commands:
-          - checkout
       jobs:
         - name: Public
           commands:
-            - git diff --name-only --exit-code HEAD^ public
+            - checkout
+      epilogue:
+        commands:
+          - if [ ! git diff --name-only --exit-code HEAD^ public ]; then exit 0; fi
+          # - if [ "$SEMAPHORE_JOB_RESULT" = "passed" ]; then echo "This command runs if job has passed"; fi
+          # - if [ "$SEMAPHORE_JOB_RESULT" = "failed" ]; then echo "This command runs if job has failed"; fi
+          # - echo "this command runs in any case"
 promotions:
   - name: Process public
     pipeline_file: public.yml
     auto_promote_on:
-      - result: failed
+      - result: passed
