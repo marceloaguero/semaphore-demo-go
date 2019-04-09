@@ -13,7 +13,7 @@ blocks:
             - checkout
       epilogue:
         commands:
-          - if [ ! git diff --name-only --exit-code HEAD^ public ]; then exit 0; fi
+          - if ! git diff --name-only --exit-code HEAD^ public; then exit; fi
           # - if [ "$SEMAPHORE_JOB_RESULT" = "passed" ]; then echo "This command runs if job has passed"; fi
           # - if [ "$SEMAPHORE_JOB_RESULT" = "failed" ]; then echo "This command runs if job has failed"; fi
           # - echo "this command runs in any case"
